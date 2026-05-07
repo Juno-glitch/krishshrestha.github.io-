@@ -363,7 +363,7 @@
     </p>
     <div class="hero-actions">
       <a href="#projects" class="btn btn-fill">See My Work</a>
-      <a href="#contact" class="btn btn-ghost">Say Hello</a>
+      <a href="mailto:matricyt7@gmail.com" class="btn btn-ghost" target="_blank">Say Hello &#8599;</a>
     </div>
     <div class="scroll-hint">
       <div class="scroll-line"></div>
@@ -406,7 +406,7 @@
         <div class="info-row"><span class="info-k">Location</span><span class="info-v">Pokhara, Nepal</span></div>
         <div class="info-row"><span class="info-k">Education</span><span class="info-v">Management + IT</span></div>
         <div class="info-row"><span class="info-k">Role</span><span class="info-v">Creative Director / Dev</span></div>
-        <div class="info-row"><span class="info-k">Email</span><span class="info-v">krish.shrestha.it@gmail.com</span></div>
+        <div class="info-row"><span class="info-k">Email</span><span class="info-v">matricyt7@gmail.com</span></div>
         <div class="info-row"><span class="info-k">Status</span><span class="info-v green">Open to work</span></div>
       </div>
     </div>
@@ -560,18 +560,22 @@
         <h2 class="contact-heading reveal">Let's Build <em>Something.</em></h2>
         <p class="contact-para reveal">Open to internships, collaborations, and community projects. If you have something worth building, let's talk.</p>
         <div class="contact-rows reveal">
-          <a href="mailto:krish.shrestha.it@gmail.com" class="c-row">
+          <a href="mailto:matricyt7@gmail.com" class="c-row" target="_blank" rel="noopener">
             <span class="c-key">Email</span>
-            <span class="c-val">krish.shrestha.it@gmail.com &#8599;</span>
+            <span class="c-val">matricyt7@gmail.com &#8599;</span>
           </a>
-          <a href="https://github.com/krishShrestha" target="_blank" class="c-row">
+          <a href="https://github.com/Juno-glitch" target="_blank" rel="noopener noreferrer" class="c-row">
             <span class="c-key">GitHub</span>
-            <span class="c-val">github.com/krishShrestha &#8599;</span>
+            <span class="c-val">github.com/Juno-glitch &#8599;</span>
           </a>
-          <div class="c-row">
+          <a href="https://Juno-glitch.github.io" target="_blank" rel="noopener noreferrer" class="c-row">
+            <span class="c-key">Portfolio</span>
+            <span class="c-val">Juno-glitch.github.io &#8599;</span>
+          </a>
+          <a href="tel:+9779806678476" class="c-row">
             <span class="c-key">Phone</span>
-            <span class="c-val">+977-98XXXXXXXX</span>
-          </div>
+            <span class="c-val">+977-9806678476 &#8599;</span>
+          </a>
           <div class="c-row">
             <span class="c-key">Based in</span>
             <span class="c-val">Pokhara, Nepal</span>
@@ -584,7 +588,7 @@
           <span class="avail-label">Currently Available</span>
         </div>
         <div class="avail-quote">"Ready to contribute, keep learning, and build things that actually matter."</div>
-        <div class="avail-email">Drop me a line at <a href="mailto:krish.shrestha.it@gmail.com">krish.shrestha.it@gmail.com</a></div>
+        <div class="avail-email">Drop me a line at <a href="mailto:matricyt7@gmail.com">matricyt7@gmail.com</a></div>
       </div>
     </div>
   </section>
@@ -623,6 +627,35 @@
       });
     }, { threshold: 0.1 });
     els.forEach(el => io.observe(el));
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section, .hero');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const secObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + id ? 'var(--accent)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => secObserver.observe(s));
+
+    // Cursor grow on links
+    document.querySelectorAll('a, button, .proj, .skill-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cur.style.transform = 'scale(2.5)';
+        rin.style.transform = 'scale(1.4)';
+        rin.style.opacity = '0.8';
+      });
+      el.addEventListener('mouseleave', () => {
+        cur.style.transform = 'scale(1)';
+        rin.style.transform = 'scale(1)';
+        rin.style.opacity = '0.5';
+      });
+    });
   </script>
 </body>
 </html>
